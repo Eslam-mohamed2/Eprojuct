@@ -1,0 +1,70 @@
+<!-- 
+<div class="row mt-3 g-0">
+  <div class="col-lg-9">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide><img height="366" src="../../assets/images/grocery-banner.png" alt=""
+          class="oF-r-contain"></ng-template>
+      <ng-template carouselSlide><img height="366" src="../../assets/images/slide-1.jpeg" alt=""
+          class="oF-r-contain"></ng-template>
+      <ng-template carouselSlide><img height="366" src="../../assets/images/grocery-banner-2.jpeg" alt=""
+          class="oF-r-contain"></ng-template>
+    </owl-carousel-o>
+  </div>
+  <div class="col-lg-3 ">
+    <div><img src="../../assets/images/slider-image-2.jpeg" alt="" class="w-100 mh cover"></div>
+    <div><img src="../../assets/images/slider-image-1.jpeg" alt="" class="w-100 mh cover"></div>
+  </div>
+</div> -->
+  <div class="row mt-3"> 
+    <div class="col-lg-9 col-md-1 col-sm-1 p-0" >
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide><img src="../../assets/images/main-slider-1.jpeg" style="height: 370px;" alt=""></ng-template>
+          <ng-template carouselSlide><img src="../../assets/images/slide-1.jpeg" style="height: 370px;" alt=""></ng-template>
+          <ng-template carouselSlide><img src="../../assets/images/slide-2.jpeg" style="height: 370px;" alt=""></ng-template>
+          <ng-template carouselSlide><img src="../../assets/images/main-slider-3.jpeg" style="height: 370px;" alt=""></ng-template>
+        </owl-carousel-o>
+    </div>  
+    <div class="col-3 p-0">
+      <div><img class="w-100" style="height: 185px;" src="../../assets/images/main-slider-3.jpeg" alt=""></div>
+      <div><img class="w-100" style="height: 185px;" src="../../assets/images/main-slider-2.jpeg" alt=""></div>
+    </div>
+  
+  </div>
+  <div class="category row my-3">
+    <h3>Shop Popular Categories</h3>
+    <div class="my-3">
+      <owl-carousel-o [options]="categoryOptions">
+        <ng-container *ngFor="let slide of categories">
+          <ng-template carouselSlide>
+            <div>
+              <img [src]="slide.image" [alt]="slide.name" [title]="slide.name" class="mh-2 object-fit-cover oF-r-contain" style="height: 350px;">
+              <h4 class="fw-bold text-center h6 mt-1">{{slide.name}}</h4>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+  
+  <input type="text" class="form-control w-75 mx-auto my-2" [(ngModel)]="searchValue">
+
+  <div class="row g-4 d-flex justify-content-between py-4">
+    <div *ngFor="let product of prodects | searching : searchValue " class="col-lg-2 col-md-5 col-sm-1 ">
+      <div class="product py-1">
+          <div [routerLink]="['/productdetails' , product._id]">
+          <img class="w-100" [src]="product.imageCover" [alt]="product.title">
+          <div class="px-2">
+            <div>
+              <span class="h6 mainColor">{{product.title.split(" ").length > 3 ? product.title.split( " " , 3).join(""):product.title}}</span>
+              <h5 class="h6 ">{{product.category.name}}</h5>
+              <div class="d-flex align-content-center justify-content-between">
+                <span>{{product.price | currency: 'EGP'}}</span>
+                <span>{{product.ratingsAverage}}<i class="fa-solid fa-star px-1 ratingColor"></i></span>
+              </div>
+            </div>
+            </div>
+          </div>
+          <button class="btn mx-2"><i class="fa-solid fa-plus"></i>Add</button>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,21 @@
+  <div class="row g-4 d-flex justify-content-between ">
+      <div *ngFor="let pordect of prodects | slice: 0 : 30" class="col-lg-2 col-md-5 col-sm-1 ">
+        <div class="product">
+          <div [routerLink]="['/productdetails' , pordect._id]">
+            <img class="w-100" [src]="pordect.imageCover" [alt]="pordect.title">
+            <div class="px-2">
+              <div>
+                <span class="h6 mainColor">{{pordect.title.split(" ").length > 3 ? pordect.title.split( " " ,
+                  3).join(""):pordect.title}}</span>
+                <h5 class="h6 ">{{pordect.category.name}}</h5>
+                <div class="d-flex align-content-center justify-content-between">
+                  <span>{{pordect.price | currency:'EGP'}}</span>
+                  <span>{{pordect.ratingsAverage}}<i class="fa-solid fa-star px-1 ratingColor"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn my-2"><i class="fa-solid fa-plus"></i>Add</button>
+        </div>
+      </div>
+  </div>

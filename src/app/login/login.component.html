@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="py-5 my-5">
+    <div class="py-5 ">
+    <form action="" [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+        <div class="mb-3">
+          <label for="example InputEmail1" class="form-label fw-bold main-color">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+          <div class="error-message" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+            <p *ngIf="loginForm.get('email')?.errors?.['required']"></p>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label fw-bold main-color">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName ="password">
+          <div class="error-message" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+            <p *ngIf="loginForm.get('password')?.errors?.['required']"></p>
+            <p *ngIf="loginForm.get('password')?.errors?.['pattren']"></p>
+          </div>
+        </div>
+        <button  type="submit" class="btn bg-main text-light fw-bold px-5 mt-4 mb-3 d-block mx-auto"><i *ngIf="isItLoading" class="fa-solid fa-spinner fa-spin" style="margin-right: 5px;"></i>Login</button>
+        <a class="main-color text-center d-block cursor-pointer" (click)="forgetPass()">forget password</a>
+        <h4 class="alert alert-danger text-center text-white" *ngIf="errorMessage">{{errorMessage}}</h4>
+        <h4 class="alert alert-success text-center text-white" *ngIf="successMessage">{{successMessage}}</h4>
+         
+    </form>
+    </div>
+  </div>
+  
+</div>
